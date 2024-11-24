@@ -3120,6 +3120,14 @@ int PasswordManager::Settings(const int userIndex)
         }
     } while (choice != 4);
 }
+void PasswordManager::ShowLogMain(const int userIndex)
+{
+    strcat(UsersArr[userIndex]->ptrUserFunc->Logs, Log);
+    Log[0] = '\0';
+    cout << "==============================================" << endl;
+    cout << UsersArr[userIndex]->ptrUserFunc->Logs << endl;
+    cout << "==============================================" << endl;
+}
 bool PasswordManager::isStrongPassword(const string password)
 {
     if (password.length() < 8)
@@ -3165,7 +3173,7 @@ void PasswordManager::Functionality(const int userIndex, char *Log)
 
     do
     {
-        cout << "1. Logins\n2. Credit Card\n3. Bank Details\n4. Passport\n5. DriverLicenses\n6. Settings\n7. Logout\n";
+        cout << "1. Logins\n2. Credit Card\n3. Bank Details\n4. Passport\n5. DriverLicenses\n6. Settings\n7. Show Log\n8. Logout\n";
         cout << "Enter choice: ";
         cin >> choice;
 
@@ -3179,7 +3187,7 @@ void PasswordManager::Functionality(const int userIndex, char *Log)
 
         if (choice < 1 || choice > 7)
         {
-            cout << "Number out of range. Please enter a number between 1 and 7." << endl;
+            cout << "Number out of range. Please enter a number between 1 and 8." << endl;
             continue;
         }
 
@@ -3235,6 +3243,9 @@ void PasswordManager::Functionality(const int userIndex, char *Log)
         }
         break;
         case 7:
+               ShowLogMain(userIndex);
+               break;
+        case 8:
             return;
         default:
             cout << "Invalid choice. Please try again." << endl;
