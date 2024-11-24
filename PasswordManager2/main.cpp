@@ -277,20 +277,38 @@ void Logins::loginInfoOptions(char *Log)
 
             cout << "Enter the title Name: ";
             getline(cin, titleName);
+            if (titleName.empty())
+            {
+                cout << "titleName should not empty" << endl;
+                strcat(UsersArr->ptrUserFunc->Logs, "titleName should not empty\n");
+                break;
+            }
 
             cout << "Enter the login Name: ";
             getline(cin, loginName);
+            if (loginName.empty())
+            {
+                cout << "loginName should not empty" << endl;
+                strcat(UsersArr->ptrUserFunc->Logs, "loginName should not empty\n");
+                break;
+            }
 
             cout << "Enter password: ";
             getline(cin, password);
+            if (password.empty())
+            {
+                cout << "password should not empty" << endl;
+                strcat(UsersArr->ptrUserFunc->Logs, "password should not empty\n");
+                break;
+            }
 
             cout << "Enter the site Name or URL: ";
             getline(cin, URL);
 
-            if (titleName.empty() || loginName.empty() || password.empty() || URL.empty())
+            if (URL.empty())
             {
-                cout << "Any field should not empty" << endl;
-                strcat(UsersArr->ptrUserFunc->Logs, "Any field should not empty\n");
+                cout << "URL should not empty" << endl;
+                strcat(UsersArr->ptrUserFunc->Logs, "URL should not empty\n");
                 break;
             }
 
