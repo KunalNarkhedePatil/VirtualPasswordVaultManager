@@ -222,5 +222,5 @@ public:
 	bool changeMasterPassword(const int userIndex);
 	int deleteAccount(const int userIndex);
 	bool isStrongPassword(const string password);
-    void ShowLogMain(const int userIndex);
+    void ShowLogMain(const int userIndex,char * Log);
 };

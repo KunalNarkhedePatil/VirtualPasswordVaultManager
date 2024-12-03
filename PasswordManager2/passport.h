@@ -16,6 +16,5 @@ public:
                            string issuingAuthority);
    bool updatePassportRecord(string passportNumber);
    int isValidPassportNumber(const string& passportNumber);
-   void showLog();
    void PassportInfoOptions(char * Log);
 };

@@ -233,12 +233,6 @@ void Logins::updateLoginRecord(int loginNo)
     }
 }
 
-void Logins::showLog()
-{
-    cout << "==============================================" << endl;
-    cout << UsersArr->ptrUserFunc->Logs << endl;
-    cout << "==============================================" << endl;
-}
 
 void Logins::loginInfoOptions(char *Log)
 {
@@ -249,7 +243,7 @@ void Logins::loginInfoOptions(char *Log)
     do
     {
         cout << "Enter the Operation\n";
-        cout << "1. Add Info\n2. View All User Login Info\n3. Search By Login Name\n4. Delete By Login No\n5. Update By Login No\n6. Show Logs\n7. Exit\n";
+        cout << "1. Add Info\n2. View All User Login Info\n3. Search By Login Name\n4. Delete By Login No\n5. Update By Login No\n6. Exit\n";
         cout << "Enter choice: ";
 
         cin >> choice;
@@ -262,9 +256,9 @@ void Logins::loginInfoOptions(char *Log)
             continue;
         }
 
-        if (choice < 1 || choice > 7)
+        if (choice < 1 || choice > 6)
         {
-            cout << "Number out of range. Please enter a number between 1 and 7." << endl;
+            cout << "Number out of range. Please enter a number between 1 and 6." << endl;
             continue;
         }
 
@@ -416,11 +410,6 @@ void Logins::loginInfoOptions(char *Log)
             break;
         }
         case 6:
-        {
-            showLog();
-            break;
-        }
-        case 7:
             strcat(UsersArr->ptrUserFunc->Logs, "Exit From Logins\n");
             return;
         default:
@@ -428,7 +417,7 @@ void Logins::loginInfoOptions(char *Log)
             strcat(UsersArr->ptrUserFunc->Logs, "Invalid choice. Please try again.\n");
             break;
         }
-    } while (choice != 7);
+    } while (choice != 6);
 }
 
 CreditCard::CreditCard(UserLoginInfo *UsersArr)
@@ -687,12 +676,7 @@ bool CreditCard::updateCreditCardRecord(string creditCardNumber)
     strcat(UsersArr->ptrUserFunc->Logs, logMessage);
 }
 
-void CreditCard::showLog()
-{
-    cout << "==============================================" << endl;
-    cout << UsersArr->ptrUserFunc->Logs << endl;
-    cout << "==============================================" << endl;
-}
+
 
 bool CreditCard::searchByCreditCardNumber(const string &searchCreditCardNumber)
 {
@@ -779,7 +763,7 @@ void CreditCard::CreditCardInfoOptions(char *Log)
     do
     {
         cout << "Enter the Operation\n";
-        cout << "1. Add Credit Card Info\n2. View All User CreditCard Info\n3. Search By CreditCard Number\n4. Delete By CreditCard No\n5. Update By CreditCard No\n6. Show Logs\n7. Exit\n";
+        cout << "1. Add Credit Card Info\n2. View All User CreditCard Info\n3. Search By CreditCard Number\n4. Delete By CreditCard No\n5. Update By CreditCard No\n7. Exit\n";
         cout << "Enter choice: ";
 
         cin >> choice;
@@ -792,9 +776,9 @@ void CreditCard::CreditCardInfoOptions(char *Log)
             continue;
         }
 
-        if (choice < 1 || choice > 7)
+        if (choice < 1 || choice > 6)
         {
-            cout << "Number out of range. Please enter a number between 1 and 7." << endl;
+            cout << "Number out of range. Please enter a number between 1 and 6." << endl;
             continue;
         }
 
@@ -1034,12 +1018,8 @@ void CreditCard::CreditCardInfoOptions(char *Log)
             }
             break;
         }
+    
         case 6:
-        {
-            showLog();
-            break;
-        }
-        case 7:
             strcat(UsersArr->ptrUserFunc->Logs, "Exit From Credit card\n");
             return;
         default:
@@ -1047,7 +1027,7 @@ void CreditCard::CreditCardInfoOptions(char *Log)
             strcat(UsersArr->ptrUserFunc->Logs, "Invalid choice. Please try again.\n");
             break;
         }
-    } while (choice != 7);
+    } while (choice != 6);
 }
 
 BankAccount::BankAccount(UserLoginInfo *UsersArr)
@@ -1378,12 +1358,7 @@ bool BankAccount::updateBankAccountRecord(string accountNumber)
 
     return false;
 }
-void BankAccount::showLog()
-{
-    cout << "==============================================" << endl;
-    cout << UsersArr->ptrUserFunc->Logs << endl;
-    cout << "==============================================" << endl;
-}
+
 int BankAccount::isValidAccountNumber(const string &accountNumber)
 {
     if (accountNumber.empty())
@@ -1413,7 +1388,7 @@ void BankAccount::BankAccountInfoOptions(char *Log)
     do
     {
         cout << "Enter the Operation\n";
-        cout << "1. Add BankAccount Info\n2. View All User BankAccount Info\n3. Search By BankAccountNumber\n4. Delete By BankAccountNumber\n5. Update By BankAccountNumber\n6. Show Logs\n7. Exit\n";
+        cout << "1. Add BankAccount Info\n2. View All User BankAccount Info\n3. Search By BankAccountNumber\n4. Delete By BankAccountNumber\n5. Update By BankAccountNumber\n7. Exit\n";
         cout << "Enter choice: ";
 
         cin >> choice;
@@ -1426,9 +1401,9 @@ void BankAccount::BankAccountInfoOptions(char *Log)
             continue;
         }
 
-        if (choice < 1 || choice > 7)
+        if (choice < 1 || choice > 6)
         {
-            cout << "Number out of range. Please enter a number between 1 and 7." << endl;
+            cout << "Number out of range. Please enter a number between 1 and 6." << endl;
             continue;
         }
         cin.ignore();
@@ -1663,11 +1638,6 @@ void BankAccount::BankAccountInfoOptions(char *Log)
             break;
         }
         case 6:
-        {
-            showLog();
-            break;
-        }
-        case 7:
             strcat(UsersArr->ptrUserFunc->Logs, "Exit from Bank Account\n");
             return;
         default:
@@ -1675,7 +1645,7 @@ void BankAccount::BankAccountInfoOptions(char *Log)
             strcat(UsersArr->ptrUserFunc->Logs, "Invalid choice. Please try again.\n");
             break;
         }
-    } while (choice != 7);
+    } while (choice != 6);
 }
 
 Passport::Passport(UserLoginInfo *UsersArr)
@@ -1960,14 +1930,6 @@ bool Passport::updatePassportRecord(string passportNumber)
 
     return false;
 }
-
-void Passport::showLog()
-{
-    cout << "==============================================" << endl;
-    cout << UsersArr->ptrUserFunc->Logs << endl;
-    cout << "==============================================" << endl;
-}
-
 bool Passport::viewAllUserPassportInfo()
 {
     if (UsersArr->ptrUserFunc->ptrStorePassportInfo == NULL)
@@ -2022,7 +1984,7 @@ void Passport::PassportInfoOptions(char *Log)
     do
     {
         cout << "Enter the Operation\n";
-        cout << "1. Add Passport Info\n2. View All User Passport Info\n3. Search By Passport Number\n4. Delete By Passport Number\n5. Update By Passport Number\n6. Show Logs\n7. Exit\n";
+        cout << "1. Add Passport Info\n2. View All User Passport Info\n3. Search By Passport Number\n4. Delete By Passport Number\n5. Update By Passport Number\n6. Exit\n";
         cout << "Enter choice: ";
 
         cin >> choice;
@@ -2035,9 +1997,9 @@ void Passport::PassportInfoOptions(char *Log)
             continue;
         }
 
-        if (choice < 1 || choice > 7)
+        if (choice < 1 || choice > 6)
         {
-            cout << "Number out of range. Please enter a number between 1 and 7." << endl;
+            cout << "Number out of range. Please enter a number between 1 and 6." << endl;
             continue;
         }
         switch (choice)
@@ -2261,12 +2223,8 @@ void Passport::PassportInfoOptions(char *Log)
             }
             break;
         }
+       
         case 6:
-        {
-            showLog();
-            break;
-        }
-        case 7:
 
             strcat(UsersArr->ptrUserFunc->Logs, "Exit from Passport Management\n");
             return;
@@ -2275,7 +2233,7 @@ void Passport::PassportInfoOptions(char *Log)
             strcat(UsersArr->ptrUserFunc->Logs, "Invalid choice. Please try again.\n");
             break;
         }
-    } while (choice != 7);
+    } while (choice != 6);
 }
 DriverLicence::DriverLicence(UserLoginInfo *UsersArr)
 {
@@ -2608,12 +2566,6 @@ int DriverLicence::isValidLicenseNumber(const string &licenseNumber)
     }
     return 1;
 }
-void DriverLicence::showLog()
-{
-    cout << "==============================================" << endl;
-    cout << UsersArr->ptrUserFunc->Logs << endl;
-    cout << "==============================================" << endl;
-}
 void DriverLicence::LicenseInfoOptions(char *Log)
 {
     strcat(UsersArr->ptrUserFunc->Logs, Log);
@@ -2623,7 +2575,7 @@ void DriverLicence::LicenseInfoOptions(char *Log)
     do
     {
         cout << "Enter the Operation\n";
-        cout << "1. Add License Info\n2. View All User License Info\n3. Search By License Number\n4. Delete By License Number\n5. Update By License Number\n6. Show Logs\n7. Exit\n";
+        cout << "1. Add License Info\n2. View All User License Info\n3. Search By License Number\n4. Delete By License Number\n5. Update By License Number\n6. Exit\n";
         cout << "Enter choice: ";
 
         cin >> choice;
@@ -2636,9 +2588,9 @@ void DriverLicence::LicenseInfoOptions(char *Log)
             continue;
         }
 
-        if (choice < 1 || choice > 7)
+        if (choice < 1 || choice > 6)
         {
-            cout << "Number out of range. Please enter a number between 1 and 7." << endl;
+            cout << "Number out of range. Please enter a number between 1 and 6." << endl;
             continue;
         }
 
@@ -2873,11 +2825,6 @@ void DriverLicence::LicenseInfoOptions(char *Log)
             break;
         }
         case 6:
-        {
-            showLog();
-            break;
-        }
-        case 7:
             strcat(UsersArr->ptrUserFunc->Logs, "Exit from License Management\n");
             return;
         default:
@@ -2885,7 +2832,7 @@ void DriverLicence::LicenseInfoOptions(char *Log)
             strcat(UsersArr->ptrUserFunc->Logs, "Invalid choice. Please try again.\n");
             break;
         }
-    } while (choice != 7);
+    } while (choice != 6);
 }
 
 PasswordManager::PasswordManager()
@@ -3120,7 +3067,8 @@ int PasswordManager::Settings(const int userIndex)
         }
     } while (choice != 4);
 }
-void PasswordManager::ShowLogMain(const int userIndex)
+void PasswordManager::ShowLogMain(const int userIndex,char *Log)
+
 {
     strcat(UsersArr[userIndex]->ptrUserFunc->Logs, Log);
     Log[0] = '\0';
@@ -3243,7 +3191,7 @@ void PasswordManager::Functionality(const int userIndex, char *Log)
         }
         break;
         case 7:
-               ShowLogMain(userIndex);
+               ShowLogMain(userIndex,Log);
                break;
         case 8:
             return;

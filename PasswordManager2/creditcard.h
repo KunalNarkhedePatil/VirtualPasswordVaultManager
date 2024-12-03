@@ -13,7 +13,6 @@ public:
                          string creditCardNumber, string cardCVV, string cardExpirationDate,
                          string issuingBankName, string bankWebsiteURL, string bankPhoneNumber);
 		bool updateCreditCardRecord( string creditCardNumber);
-		void showLog();
 		void CreditCardInfoOptions(char * Log);
 		int isValidCreditCardNumber(const string& creditCardNumber);
 };
