@@ -3134,7 +3134,7 @@ void PasswordManager::Functionality(const int userIndex, char *Log)
             continue;
         }
 
-        if (choice < 1 || choice > 7)
+        if (choice < 1 || choice > 8)
         {
             cout << "Number out of range. Please enter a number between 1 and 8." << endl;
             continue;
