@@ -15,10 +15,6 @@ Logins::Logins(UserLoginInfo *UsersArr)
 bool Logins::searchByLoginName(const string &SearchLoginName)
 {
     bool bFlag = 0;
-    if (SearchLoginName.empty())
-    {
-        return false;
-    }
     StoreLoginInfo *temp = UsersArr->ptrUserFunc->ptrStoreLoginInfo;
 
     while (temp != NULL)
@@ -26,6 +22,7 @@ bool Logins::searchByLoginName(const string &SearchLoginName)
         if (temp->loginName == SearchLoginName)
         {
             bFlag = 1;
+            cout << "-------------------------------------" << endl;
             cout << "Title Name: " << temp->titleName << endl;
             cout << "Login Name: " << temp->loginName << endl;
             cout << "Password: " << temp->password << endl;
@@ -693,6 +690,7 @@ bool CreditCard::searchByCreditCardNumber(const string &searchCreditCardNumber)
         if (temp->creditCardNumber == searchCreditCardNumber)
         {
             found = true;
+            cout << "-------------------------------------" << endl;
             cout << "Credit Card Title: " << temp->creditCardTitle << endl;
             cout << "Cardholder Name: " << temp->cardholderName << endl;
             cout << "Credit Card Number: " << temp->creditCardNumber << endl;
@@ -1102,6 +1100,7 @@ bool BankAccount::searchByBankAccountNumber(const string &accountNumber)
     {
         if (temp->accountNumber == accountNumber)
         {
+            cout << "=============================================" << endl;
             cout << "Account Number: " << temp->accountNumber << endl;
             cout << "Account Holder Name: " << temp->accountHolderName << endl;
             cout << "Bank Name: " << temp->bankName << endl;
@@ -1699,6 +1698,7 @@ bool Passport::searchByPassportNumber(const string &passportNumber)
     {
         if (temp->passportNumber == passportNumber)
         {
+            cout << "=============================================" << endl;
             cout << "Full Name: " << temp->fullName << endl;
             cout << "Passport Number: " << temp->passportNumber << endl;
             cout << "Nationality: " << temp->nationality << endl;
@@ -2283,6 +2283,7 @@ bool DriverLicence::searchByLicenseNumber(const string &licenseNumber)
         if (temp->licenseNumber == licenseNumber)
         {
             found = true;
+            cout << "-------------------------------------" << endl;
             cout << "Driver Full Name: " << temp->driverFullName << endl;
             cout << "License Number: " << temp->licenseNumber << endl;
             cout << "Address: " << temp->driverAddress << endl;

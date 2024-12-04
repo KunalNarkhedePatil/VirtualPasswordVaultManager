@@ -203,12 +203,7 @@ void Logins::updateLoginRecord(int loginNo)
 	}
 }
 
-void Logins::showLog()
-{
-	cout << "==============================================" << endl;
-	cout << UsersArr->ptrUserFunc->Logs << endl;
-	cout << "==============================================" << endl;
-}
+
 
 void Logins::loginInfoOptions(char *Log)
 {
@@ -219,7 +214,7 @@ void Logins::loginInfoOptions(char *Log)
 	do
 	{
 		cout << "Enter the Functionality\n";
-		cout << "1. Add Info\n2. View All User Login Info\n3. Search By Login Name\n4. Delete By Login No\n5. Update By Login No\n6. Show Logs\n7. Exit\n";
+		cout << "1. Add Info\n2. View All User Login Info\n3. Search By Login Name\n4. Delete By Login No\n5. Update By Login No\n6. Exit\n";
 		cout << "Enter choice: ";
 
 		cin >> choice;
@@ -232,9 +227,9 @@ void Logins::loginInfoOptions(char *Log)
 			continue;
 		}
 
-		if (choice < 1 || choice > 7)
+		if (choice < 1 || choice > 6)
 		{
-			cout << "Number out of range. Please enter a number between 1 and 7." << endl;
+			cout << "Number out of range. Please enter a number between 1 and 6." << endl;
 			continue;
 		}
 
@@ -287,7 +282,7 @@ void Logins::loginInfoOptions(char *Log)
 
 			bool found = Logins::searchByLoginName(searchLoginName);
 
-			if (!found)
+			if (found==false)
 			{
 				cout << "There is no such Login present." << endl;
 				strcat(UsersArr->ptrUserFunc->Logs, "There is no such Login present.\n");
@@ -335,11 +330,6 @@ void Logins::loginInfoOptions(char *Log)
 			break;
 		}
 		case 6:
-		{
-			showLog();
-			break;
-		}
-		case 7:
 			strcat(UsersArr->ptrUserFunc->Logs, "Exit\n");
 			return;
 		default:
@@ -347,7 +337,7 @@ void Logins::loginInfoOptions(char *Log)
 			strcat(UsersArr->ptrUserFunc->Logs, "Invalid choice. Please try again.\n");
 			break;
 		}
-	} while (choice != 7);
+	} while (choice != 6);
 }
 
 CreditCard::CreditCard(UserLoginInfo *UsersArr)

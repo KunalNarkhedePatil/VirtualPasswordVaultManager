@@ -12,6 +12,5 @@ public:
 		bool deleteByLoginNo(int loginNo);
 		bool addLoginRecord(string titleName,string loginName,string password,string URL);
 		void updateLoginRecord(int loginNo);
-		void showLog();
 		void loginInfoOptions(char * Log);
 };
