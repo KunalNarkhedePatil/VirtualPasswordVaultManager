@@ -3,11 +3,30 @@
 #include "backaccount.h"
 #include "passport.h"
 #include "driverlicence.h"
+#include "XOREncryption.h"
 #include <regex>
 #include <cstdlib>
 #include <cctype> 
 #include<string>
 
+XOREncryption xorEnc("kunal123"); 
+
+XOREncryption::XOREncryption(const std::string& key) : m_key(key) 
+{
+    
+}
+
+std::string XOREncryption::encrypt(const std::string& data) 
+{
+    std::string result = data;
+    for (size_t i = 0; i < data.size(); ++i)
+        result[i] ^= m_key[i % m_key.length()];
+    return result;
+}
+
+std::string XOREncryption::decrypt(const std::string& data) {
+    return encrypt(data); // XOR encryption is symmetric
+}
 
 Logins::Logins(UserLoginInfo *UsersArr)
 {
@@ -2443,6 +2462,9 @@ bool PasswordManager::registerUser(const string &userName, const string &passwor
 }
 bool PasswordManager::loginUser(const string &userName, const string &password)
 {
+    cout<<"Inside Login"<<endl;
+   // std::string decrPassword = xorEnc.decrypt(password);
+
 	if (userName.empty() || password.empty())
 	{
 		return false;
@@ -2450,9 +2472,12 @@ bool PasswordManager::loginUser(const string &userName, const string &password)
 
 	for (int i = 0; i < MAX_USER; i++)
 	{
+        cout<<"Enc Pass:"<<UsersArr[i]->password<<endl;
+        std::string decrPassword = xorEnc.decrypt(UsersArr[i]->password);
+        cout<<"Dec Pass:"<<decrPassword<<endl;
 		if (UsersArr[i] != NULL &&
 			UsersArr[i]->userName == userName &&
-			UsersArr[i]->password == password)
+			decrPassword == password)
 		{
 
 			return true;
@@ -2817,7 +2842,10 @@ int main()
                 break;
             }
 
-            if (pm.registerUser(username, password))
+            cout<<"Password:"<<password<<endl;
+            std::string encryptedPassword = xorEnc.encrypt(password);
+            cout<<"Enc Password:"<<encryptedPassword<<endl;
+            if (pm.registerUser(username, encryptedPassword))
             {
                 cout << "User  registered successfully." << endl;
 
